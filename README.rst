@@ -81,7 +81,7 @@ Hosts : /etc/icinga2/scripts/hipchat-host-notification.sh ::
     
     #!/bin/bash
     
-    hipsaint --user=Icinga --token=<TOKEN> --room=<ROOM_ID> --type=host --inputs="$HOSTNAME|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$HOSTSTATE|$HOSTOUTPUT" -n
+    hipsaint --user=Icinga --token=<TOKEN> --room=<ROOM_ID> --type=host --inputs="$HOSTALIAS|$LONGDATETIME|$NOTIFICATIONTYPE|$HOSTADDRESS|$HOSTSTATE|$HOSTOUTPUT" -n
 
 Services : /etc/icinga2/scripts/hipchat-service-notification.sh ::
 
@@ -110,9 +110,9 @@ Create a file called ``hipsaint.conf`` in your ``conf.d`` directory ::
         SERVICEDESC = "$service.name$"
         HOSTALIAS = "$host.display_name$"
         HOSTADDRESS = "$address$"
-        SERVICESTATE = "$service.state$"
+        HOSTSTATE = "$host.state$"
         LONGDATETIME = "$icinga.long_date_time$"
-        SERVICEOUTPUT = "$service.output$"
+        HOSTOUTPUT = "$host.output$"
       }
     }
 
